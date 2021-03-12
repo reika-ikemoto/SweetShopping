@@ -1,0 +1,42 @@
+NAME OF WEBSITE
+:SWEETS SHOPPING (EC site)
+
+Users
+- They can search for your favorite sweet in a search bar.
+- They select sweets which they want. 
+- They buy them on the website.
+- If thire total is greater than $50, they can buy them 20%off.
+- If they buy sweets as s gift, they have to pay additional fee.
+- Pick-up or delivery? If delivery, add delivery charge.
+
+Admin
+- They can add new sweet from admin page.
+- They can see what customers boght.
+- They can see all customers.
+
+
+<Table Desighn>
+■users
+user_id(PK)：int(11) NOT NULL
+first_name：varchara(50) NOT NULL
+last_name：varchara(50) NOT NULL
+username：varchara(50) NOT NULL
+address:varchara(50) NOT NULL
+email:varchara(50) NOT NULL
+phone:varchara(50) NULL
+password：varchara(255) NOT NULL
+status：varchara(1) (A/U) Defalut:U  NOT NULL
+
+■products
+product_id：int(11)  NOT NULL
+product_name：varchara(50)  NOT NULL
+product_price:int(5)  NOT NULL
+product_stock:int(5)  NOT NULL
+img_url:varchara(255) NOT NULL
+
+■orders
+purchases_id(PK)：int(11) NOT NULL
+date_ordered：date
+user_id：int(11)
+product_id：int(11)
+number_of_purchase：int(5)
