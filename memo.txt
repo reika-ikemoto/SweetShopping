@@ -5,7 +5,7 @@ Users
 - They can search for your favorite sweet in a search bar.
 - They select sweets which they want. 
 - They buy them on the website.
-- If thire total is greater than $50, they can buy them 20%off.
+- If thire total is greater than $20, they can buy them 20%off.
 - If they buy sweets as s gift, they have to pay additional fee.
 - Pick-up or delivery? If delivery, add delivery charge.
 

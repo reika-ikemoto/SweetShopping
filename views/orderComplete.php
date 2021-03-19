@@ -1,3 +1,18 @@
+<?php
+
+require_once "../classes/product.php";
+$product = new Product;
+
+require_once "../classes/cart.php";
+$cart = new Cart;
+
+$customer_id = $_SESSION['user_id'];
+//print_r($customer_id);
+
+//$cart->getCart($);
+//$product = editProductStock();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,25 +28,36 @@
 </head>
 
 <body>
+
 <?php
 include "header.php";
-
 ?>
 
-<?php
-require_once "../classes/cart.php";
-$customer_id = $_SESSION['user_id'];
-//print_r($customer_id);
+<style>
+h3.display-4{ 
+    font-size: 40px;
+}
+</style>
 
-?>
+<br>
+<br>
 
-<div class="container w-50 mt-5">
-    <h1 class="display-4">Thank you for your purchasing.</h1>
+<div class="container w-75">
+    <div class="form-row justify-content-center">
+        <img src="../img/Thankyou.png" alt="Thankyou Image" class="img-fluid" width="400" height="400">
+    </div>
+    <div class="form-row justify-content-center">
+        <h3 class="display-4">Please come again!</h3>
+    </div>
+    <div class="form-row justify-content-center">
+        <a href="index.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to TOP Page</a>
+    </div>
+    
+</div>
 </div>
 
 <?php
 
-$cart = new Cart;
 $cart->truncateCart($customer_id);
 
 ?>

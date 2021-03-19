@@ -5,7 +5,7 @@ require_once "database.php";
 class User extends Database{
 
     public function createUser($first_name, $last_name, $user_name, $address, $email, $phone, $password){
-        $sql = "INSERT INTO users(first_name, last_name, `username`, `address`, email, phone, `password`) 
+        $sql = "INSERT INTO users(first_name, last_name, `user_name`, `address`, email, phone, `password`) 
                 VALUES('$first_name', '$last_name', '$user_name', '$address', '$email', '$phone', '$password')";
 
         if($this->conn->query($sql)){
@@ -17,7 +17,8 @@ class User extends Database{
     }
 
     public function login($user_name, $password){
-        $sql = "SELECT * FROM users WHERE `username` = '$user_name'";
+        $sql = "SELECT * FROM users WHERE `user_name` = '$user_name'";
+        //print_r($sql);
 
         $result = $this->conn->query($sql);
         //print_r($result);
@@ -30,7 +31,7 @@ class User extends Database{
                 session_start();
 
                 $_SESSION['user_id'] = $user_detail['user_id'];
-                $_SESSION['user_name'] = $user_detail['username'];
+                $_SESSION['user_name'] = $user_detail['user_name'];
                 $_SESSION['status'] = $user_detail['status'];
                 //print_r($_SESSION['user_name']);
 
@@ -42,6 +43,43 @@ class User extends Database{
             }
         }else{
             echo "Your username is Wrong";
+        }
+    }
+
+    public function getUsers(){
+        $sql = "SELECT * FROM users ORDER BY user_name ASC";
+
+        if($result = $this->conn->query($sql)){
+            return $result;
+            exit;
+        }else{
+            die("Error Retriving users: ". $this->conn->error);
+        }
+    }
+
+    //Profile Page
+    public function getUser($user_id){
+        $sql = "SELECT * FROM users WHERE `user_id` = '$user_id'";
+
+        if($result = $this->conn->query($sql)){
+            //return $result;
+            return $result->fetch_assoc();
+            exit;
+        }else{
+            die("Error Retriving user: ". $this->conn->error);
+        }
+    }
+
+    public function updateUser($user_id, $first_name, $last_name, $user_name, $address, $email, $phone, $password){
+        $sql = "UPDATE users SET first_name = '$first_name', last_name = '$last_name', user_name = '$user_name',
+        address = '$address', email = '$email', phone = '$phone', password = '$password'
+        WHERE user_id = '$user_id'";
+
+        if($this->conn->query($sql)){
+            header("location: ../views/index.php");
+            exit;
+        }else{
+            die("Error to update user: " . $this->conn->error);
         }
     }
 }

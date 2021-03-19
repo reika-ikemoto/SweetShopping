@@ -7,8 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
-<body>
-
+<body class=>
 <div class="container w-50 mt-5">
     <div class="card mx-auto w-50 my-5 border border-0">
         <h1>Welcome to our site</h1>
