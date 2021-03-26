@@ -81,7 +81,7 @@ class Product extends Database{
             if (move_uploaded_file($tmp_name, $destination)) {
                 //move_uploaded_file(from, to)
 
-               header("location: ../views/admin.php");
+               header("location: ../views/admin.php?page=1");
                exit;
             } else {
                die("Error moving the photo.");

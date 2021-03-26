@@ -84,7 +84,6 @@ $user_detail = $user->getUser($user_id);
             <div class="form-row mt-5 justify-content-center">
                 <div class="form-group">
                     <button type="submit" class="btn btn-warning mb-3 text-white" name="update"><i class="fas fa-edit"></i> Update</button><br>
-                    <!--<input type="submit" name="update" value="Update" class="form-control btn btn-warning text-white">-->
                 </div>
             </div>
             <h1></h1>
