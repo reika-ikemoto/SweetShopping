@@ -117,8 +117,6 @@ $num_rows = $order->getNumOfRows();
                 
                 <div class="form-group">
                     <button type="submit" id="" class="btn btn-warning mt-3 mb-3 text-white" name="add"><i class="fas fa-plus"></i> Add</button><br>
-                    
-                    <!--<input type="submit" name="add" value="" class="form-control btn btn-warning text-white">-->
                 </div>
             </div>
         </form>
@@ -173,7 +171,6 @@ $num_rows = $order->getNumOfRows();
                         <td><?php echo "$ ".$get_products['unit_price'];?></td>
                         <td><?php echo $get_products['product_stock'];?></td>
                         <td><?php echo $get_products['description'];?></td>
-
                     <?php
                         }
                     ?>
@@ -205,9 +202,13 @@ $num_rows = $order->getNumOfRows();
             <tbody>
             <?php
                 while($get_users = $users->fetch_assoc()){
-                   // print_r($get_users);
+                 print_r($get_users);
             ?>
                 <tr>
+                <?php
+                    if($get_users['status'] == "A"){
+                ?>
+
                     <td><?php echo $get_users['first_name'];?></td>
                     <td><?php echo $get_users['last_name'];?></td>
                     <td><?php echo $get_users['user_name'];?></td>
@@ -215,6 +216,13 @@ $num_rows = $order->getNumOfRows();
                     <td><?php echo $get_users['email'];?></td>
                     <td><?php echo $get_users['phone'];?></td>
                     <td><?php echo $get_users['status'];?></td>
+                <?php
+                    }else{
+                ?>
+
+                <?php
+                    }
+                ?>
                 </tr>
 
             <?php
@@ -224,7 +232,7 @@ $num_rows = $order->getNumOfRows();
         </table>
     </details>
 
-    <br>
+<br>
     <!--Add Sweet-->
     <details>
         <summary style="display:block;">
