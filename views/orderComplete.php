@@ -1,18 +1,3 @@
-<?php
-
-require_once "../classes/product.php";
-$product = new Product;
-
-require_once "../classes/cart.php";
-$cart = new Cart;
-
-$customer_id = $_SESSION['user_id'];
-//print_r($customer_id);
-
-//$cart->getCart($);
-//$product = editProductStock();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,14 +8,30 @@ $customer_id = $_SESSION['user_id'];
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 <title>Order Complete</title>
 </head>
 
 <body>
+<br>
+<br>
 
 <?php
 include "header.php";
+
+?>
+
+<?php
+$customer_id = $_SESSION['user_id'];
+//print_r($customer_id);
+
+require_once "../classes/product.php";
+$product = new Product;
+
+
+require_once "../classes/cart.php";
+$cart = new Cart;
+
 ?>
 
 <style>
@@ -41,7 +42,7 @@ h3.display-4{
 
 <br>
 <br>
-
+<br>
 <div class="container w-75">
     <div class="form-row justify-content-center">
         <img src="../img/Thankyou.png" alt="Thankyou Image" class="img-fluid" width="400" height="400">
@@ -50,7 +51,7 @@ h3.display-4{
         <h3 class="display-4">Please come again!</h3>
     </div>
     <div class="form-row justify-content-center">
-        <a href="index.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to TOP Page</a>
+        <a href="index.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to HOME</a>
     </div>
     
 </div>

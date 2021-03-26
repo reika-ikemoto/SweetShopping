@@ -18,6 +18,14 @@
 h3.display-4{ 
     font-size: 40px;
 }
+
+.table-plus{
+  background-color: #00A95F;
+}
+
+.table-minus{
+  background-color: #E9546B;
+}
 </style>
 
 <?php
@@ -32,42 +40,48 @@ $customer_id = $_SESSION['user_id'];
 
 $cart = new Cart;
 $cart_list = $cart->getCart($customer_id);
-//print_r($cart_list);
+
 
 ?>
 <br>
 <br>
+<br>
 <div class="container w-75 mt-5">
-    <a href="index.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Top Page</a>
+    <a href="index.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> &nbsp;Back to Home</a>
     <h2 class="display-4">Confirm Your Order</h2>
+    
+        <?php //print_r($cart_list); 
+            if($cart_list->num_rows == 0 ){
+        ?>
+            <h3 class="display-4" style="color:gray; font-weight:bold;">Your cart is empty.</h3>
+        <?php
+            }else{
+        ?>
+
         <div class="row">
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
                         <form action="" method="post">
-                            <!--<div class="">-->
                                 <h3 class="display-4"><i class="fas fa-biking"></i> Delivery or Pick up?</h3>
                                 <p class="order-confirm mb-0">$2 For Delivery</p>
                                     <div class="form-group col-md-6 pl-0">
-                                        <input type="radio" name="how_to_get" id="delivery" value="delivery" class="form-check-inline" required>
-                                        <label for="delivery">Delivery</label>
-                                        <input type="radio" name="how_to_get" id="pick_up" value="pick_up" class="form-check-inline" required>
+                                        <input type="radio" name="how_to_get" id="delivery" value="delivery" class="form-check-inline" style="margin-right: 1px;" required>
+                                        <label for="delivery" style="padding-right: 50px;">Delivery</label>
+                                        <input type="radio" name="how_to_get" id="pick_up" value="pick_up" class="form-check-inline" style="margin-right: 1px;" required>
                                         <label for="pick_up">Pick Up</label>
                                     </div>
-                            <!--</div>-->
-                            <!--If they buy sweets as s gift, they have to pay additional fee.-->
-                            <!--<div class="form-row">-->
+                                <!--If they buy sweets as s gift, they have to pay additional fee.-->
                                 <h3 class="display-4"><i class="fas fa-gift"></i> Gift or For you?</h3>
                                 <p class="order-confirm mb-0">$3 For Gift</p>
                                     <div class="form-group col-md-6 pl-0">
-                                        <input type="radio" name="who_is_it_for" id="gift" value="gift" class="form-check-inline" required>
-                                        <label for="gift">Gift</label>
-                                        <input type="radio" name="who_is_it_for" id="for_you" value="for_you" class="form-check-inline" required>
+                                        <input type="radio" name="who_is_it_for" id="gift" value="gift" class="form-check-inline" style="margin-right: 1px;" required>
+                                        <label for="gift" style="padding-right: 82px;">Gift</label>
+                                        <input type="radio" name="who_is_it_for" id="for_you" value="for_you" class="form-check-inline" style="margin-right: 1px;" required>
                                         <label for="for_you">For you</label>
                                     </div>
-                            <!--</div>-->
-                            <h1 class="display-6"><i class="fas fa-dollar-sign"></i> Discount</h1>
-                                    <span style="color:red">If your total price is greater than <span style="font-weight: bold; color: red;">$20</span>, you can buy them <span style="font-weight: bold; color: red;">20%off</span><br>(including Delivery fee and Gift fee)</span><br>
+                                <h1 class="display-6"><i class="fas fa-dollar-sign"></i> Discount</h1>
+                                    <span style="color:red">If your spend more than <span style="font-weight: bold; color: red;">$20</span>, you can buy them <span style="font-weight: bold; color: red;">20%off</span><br>(including Delivery fee and Gift fee)</span><br>
                                     <div class="form-group col-md-4 justify-content-end">
                                     <input type="submit" name="calculate" value="Calculate Total" class="form-control btn btn-primary mt-5">
                                     </div>
@@ -117,9 +131,9 @@ $cart_list = $cart->getCart($customer_id);
                         <form action="../actions/orderConfirm.php" method="post">
                             <!--Delivery or Pick up-->
                                 <tr>
-                                        <td class="bg-success text-white" colspan="3"></td>
-                                        <td class="bg-success text-white"><i class="fas fa-plus"></i></td>
-                                        <td class="bg-success text-white">Delivery Fee</td>
+                                        <td class="table-plus text-white" colspan="3"></td>
+                                        <td class="table-plus text-white"><i class="fas fa-plus"></i></td>
+                                        <td class="table-plus text-white">Delivery Fee</td>
                                     <?php 
                                         if($_POST['how_to_get'] == "delivery"){
                                             $delivery_fee = 2;
@@ -131,9 +145,9 @@ $cart_list = $cart->getCart($customer_id);
                                 </tr>
                             <!--Gift or For you-->
                                 <tr>
-                                        <td class="bg-success text-white" colspan="3"></td>
-                                        <td class="bg-success text-white"><i class="fas fa-plus"></i></td>
-                                        <td class="bg-success text-white">Gift Fee</td>
+                                        <td class="table-plus text-white" colspan="3"></td>
+                                        <td class="table-plus text-white"><i class="fas fa-plus"></i></td>
+                                        <td class="table-plus text-white">Gift Fee</td>
                                     <?php
                                         if($_POST['who_is_it_for'] == "gift"){
                                             $gift_fee = 3;
@@ -150,9 +164,9 @@ $cart_list = $cart->getCart($customer_id);
                                     if($total1 >= 20){
                                 ?>
                                     <tr>
-                                        <td class="bg-danger text-white" colspan="3"></td>
-                                        <td class="bg-danger text-white"><i class="fas fa-minus"></i></td>
-                                        <td class="bg-danger text-white">Dicount Free</td>
+                                        <td class="table-minus text-white" colspan="3"></td>
+                                        <td class="table-minus text-white"><i class="fas fa-minus"></i></td>
+                                        <td class="table-minus text-white">Discount Free</td>
                                         <?php $discount = $total1 * 0.2;?>
                                         <td> <?php echo $discount; ?></td>
                                     </tr>
@@ -166,7 +180,7 @@ $cart_list = $cart->getCart($customer_id);
                                         <td class="bg-dark" colspan="4"></td>
                                         <td class="bg-dark text-white">Total Price</td>
                                         <?php $total_price = $total1 - $discount;?>
-                                        <td><span style="font-weight: bold; color: red;"><?php echo $total_price;?></span></td>
+                                        <td><span style="font-weight: bold; color: black; font-size:x-large"><?php echo $total_price;?></span></td>
                                     </tr>
                                 
                                     <input type="hidden" name="customer_id" value="<?php echo $customer_id;?>">
@@ -180,9 +194,6 @@ $cart_list = $cart->getCart($customer_id);
                                 <div class="form-group col-md-3">
                                     <input type="submit" value="Place Order" name="buy" class="form-control btn btn-primary">
                                 </div>
-                                <!--<div class="form-group col-md-3 wrap ">
-                                    <input type="submit" value="Place Order" name="buy" class="button">
-                                </div>-->
                             </div>
 
                         </form> 
@@ -191,7 +202,11 @@ $cart_list = $cart->getCart($customer_id);
                         }
                     ?>
             </div>
-        </div>
+        <?php
+            }
+        ?>
+
+    </div>
         
 
 </div>

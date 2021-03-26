@@ -40,7 +40,7 @@ html, body {
   }
 
   .product-name {
-    font-weight: bold;
+    font-size: 28px;
   }
 
   /*navigation var*/
@@ -82,7 +82,7 @@ html, body {
     color: #111;
   }
   .global-nav__item a:hover {
-    background-color: #eee;
+    background-color:#c0c0c0;
   }
   .hamburger__line {
     position: absolute;
@@ -134,3 +134,5 @@ html, body {
     transform: rotate(-45deg);
     top: 20px;
   }
+
+

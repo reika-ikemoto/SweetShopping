@@ -76,7 +76,7 @@ class User extends Database{
         WHERE user_id = '$user_id'";
 
         if($this->conn->query($sql)){
-            header("location: ../views/index.php");
+            header("location: ../views/profile.php?update_result=1");
             exit;
         }else{
             die("Error to update user: " . $this->conn->error);

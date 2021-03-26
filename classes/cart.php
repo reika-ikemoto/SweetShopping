@@ -9,7 +9,7 @@ class Cart extends Database{
         $sql = "INSERT INTO carts (customer_id, product_id, quantity, unit_price) VALUES('$customer_id', '$product_id', '$quantity', '$unit_price')";
 
         if($this->conn->query($sql)){
-            header("location: ../views/orderConfirm.php");
+            header("location: ../views/index.php");
             exit;
         }else{
             die("Error to insert cart: " . $this->conn->error);
@@ -24,6 +24,18 @@ class Cart extends Database{
         if($result = $this->conn->query($sql)){
             //print_r($result);
             return $result;
+            exit;
+        }else{
+            die("Error retriving cart: " . $this->conn->error);
+        }
+    }
+
+    public function getCartCount($customer_id){
+        $sql = "SELECT COUNT(*) FROM carts WHERE customer_id = '$customer_id'";
+
+        if($result = $this->conn->query($sql)){
+            //print_r($result);
+            return $result->fetch_assoc();
             exit;
         }else{
             die("Error retriving cart: " . $this->conn->error);
@@ -55,8 +67,10 @@ class Cart extends Database{
         }
     }
 
+    //Remove selected product from your cart
     public function deleteCart($cart_id){
         $sql="DELETE FROM carts WHERE cart_id = '$cart_id'";
+        //print_r($sql);
 
         if($this->conn->query($sql)){
             header("location: ../views/orderConfirm.php");
@@ -69,6 +83,7 @@ class Cart extends Database{
     //After clicking BUY button at views/orderConfirm.php
     public function truncateCart($customer_id){
         $sql="DELETE FROM carts WHERE customer_id = '$customer_id'";
+        //print_r($sql);
 
         if($this->conn->query($sql)){
             exit;

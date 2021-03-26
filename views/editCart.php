@@ -37,7 +37,7 @@ $cart_detail = $cart->getCartProduct($cart_id);
 <br>
 <br>
     <div class="container w-50 mt-5">
-    <a href="orderConfirm.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Order Confirm</a>
+    <a href="orderConfirm.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> &nbsp;Back to Order Confirm</a>
     <h1 class="display-4">Edit Your Order</h1>
         <form action="../actions/editCart.php" method="post">
             <table class="table">
@@ -69,7 +69,7 @@ $cart_detail = $cart->getCartProduct($cart_id);
                                 alert('Please put quantity');
                             } else if (num > maxNum) { // The number of stocks is exceeded
                                 num = maxNum;
-                                alert('The product stock is '+ maxNum + ' pieces');
+                                alert('We only have '+ maxNum + ' in stock');
                             }
                             $(this).val(num);
                             if(num != 0) {
@@ -84,7 +84,7 @@ $cart_detail = $cart->getCartProduct($cart_id);
                         <td><p><?php echo $cart_detail['product_name'];?></p></td>
                         <td><input type="number" name="quantity" value="<?php echo $cart_detail['quantity'];?>" id="jsNum" class="form-control" max="<?php echo $products['product_stock'];?>"></td>
                         <td><p><?php echo $cart_detail['unit_price'];?></p></td>
-                        <td><input type="number" name="subtotal" value="" id="jsPrice" class="form-control" readonly></td>
+                        <td><input type="number" name="subtotal" value="<?php echo $cart_detail['quantity'] * $cart_detail['unit_price'];?>" id="jsPrice" class="form-control" readonly></td>
                     </tr>
                 </tbody>
                 
@@ -92,7 +92,8 @@ $cart_detail = $cart->getCartProduct($cart_id);
 
             <div class="form-row justify-content-center">
                 <div class="form-group col-md-3">
-                    <input type="submit" name="edit" value="Edit" class="form-control btn btn-warning text-white">
+                    <button type="submit" class="btn btn-warning mb-3 text-white" name="edit"><i class="fas fa-edit"></i> Update</button><br>
+                    <!--<input type="submit" name="edit" value="Edit" class="form-control btn btn-warning text-white">-->
                 </div>
             </div>
 
