@@ -202,7 +202,7 @@ $num_rows = $order->getNumOfRows();
             <tbody>
             <?php
                 while($get_users = $users->fetch_assoc()){
-                 print_r($get_users);
+                 //print_r($get_users);
             ?>
                 <tr>
                 <?php

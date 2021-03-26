@@ -34,8 +34,9 @@ include "header.php";
 <body>
 <br>
 <br>
+<br>
     <div class="container w-75 mt-5">
-    <a href="admin.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> &nbsp;Back to Admin Page</a>
+    <a href="admin.php?page=1" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> &nbsp;Back to Admin Page</a>
     <h1 class="display-4">Edit Sweet</h1>
         <form action="../actions/editProduct.php" enctype="multipart/form-data" method="post">
             <table class="table">
