@@ -33,7 +33,7 @@ class User extends Database{
                 $_SESSION['user_id'] = $user_detail['user_id'];
                 $_SESSION['user_name'] = $user_detail['user_name'];
                 $_SESSION['status'] = $user_detail['status'];
-                //print_r($_SESSION['user_name']);
+                print_r($_SESSION['user_name']);
 
                 header("location: ../views/index.php");
                 exit;

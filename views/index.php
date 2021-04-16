@@ -1,4 +1,11 @@
 <?php
+    include "header.php";
+    //print_r($_SESSION['user_id']);
+
+    if(!$_SESSION['user_id']){
+        header("location: login.php");
+        exit;
+    }
 
 require_once "../classes/product.php";
 
@@ -23,9 +30,6 @@ $product_lists = $product->getProducts();
 
 <body>
 
-<?php
-include "header.php";
-?>
 
 <div class="container-fluid" style="padding-left:0px; padding-right:0px;">
     <div class="jumbotron" style="background: no-repeat url(../img/ice-cream.jpg); background-size:cover; height: 70vh;">
