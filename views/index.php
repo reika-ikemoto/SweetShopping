@@ -1,6 +1,5 @@
 <?php
     include "header.php";
-    //print_r($_SESSION['user_id']);
 
     if(!$_SESSION['user_id']){
         header("location: login.php");
