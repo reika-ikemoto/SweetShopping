@@ -1,10 +1,14 @@
 <?php
 
 class Database{
-    private $server_name = "us-cdbr-east-03.cleardb.com";
-    private $username = "be1786ae7f8a22";
-    private $password = "64d3a78c";
-    private $db_name = "heroku_768162854ad8377";
+    //private $server_name = "us-cdbr-east-03.cleardb.com";
+    //private $username = "be1786ae7f8a22";
+    //private $password = "64d3a78c";
+    //private $db_name = "heroku_768162854ad8377";
+    private $server_name = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $db_name = "sweets_shopping";
 
     protected $conn;
 
